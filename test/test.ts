@@ -2,16 +2,16 @@ import { describe, it } from "node:test";
 
 // test/test.js
 const assert = require('assert');
-const parseAndModifyOklch = require('../index');
+const extractOklchValue = require('../src/functions/extractOklchValue');
 
-describe('Oklch Parser and Modifier', () => {
-  it('should parse and modify Oklch color codes', () => {
+describe('Oklch extractor', () => {
+  it('should extract Oklch color codes', () => {
     const inputString = 'This is an example oklch(70, 50, 120) color code.';
-    const modifiedString = parseAndModifyOklch(inputString);
+    const modifiedString = extractOklchValue(inputString);
 
     assert.strictEqual(
       modifiedString,
-      'This is an example rgb(255,0,0) color code.' // Replace with your expected output
+      '(70, 50, 120)' // Replace with your expected output
     );
   });
 });

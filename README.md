@@ -7,19 +7,44 @@ The oklch-parser-modifier npm package is a versatile utility for working with Ok
 Install the package in your Node.js project using:
 
 ```bash
-npm install oklch-parser-modifier
+npm install oklchify
 ```
 
 ## Usage
 
+### Extracting Oklch value
 ```javascript
-const oklchParserModifier = require('oklch-parser-modifier');
+const oklchParserModifier = require('oklchify');
 
 const inputString = 'This is an example oklch(70, 50, 120) color code.';
-const modifiedString = oklchParserModifier(inputString);
+const modifiedString = oklchify.extractOklchValue(inputString);
 
 console.log(modifiedString);
-// Output: 'This is an example rgb(255,0,0) color code.'
+// Output: '(70, 50, 120)'
+```
+
+### Modify Oklch value based on single property
+```javascript
+// Original Oklch values without alpha
+const originalOklch1: OklchValue = [60, 32, 250];
+const modifiedOklch1 = modifyOklch(...originalOklch1 as [number, number, number], undefined, 'hue', 270);
+console.log(modifiedOklch1); // Expected output: [60, 32, 270]
+
+// Original Oklch values with alpha
+const originalOklch2: OklchValue = [60, 32, 250, 80];
+const modifiedOklch2 = modifyOklch(...originalOklch2, 'alpha', 90);
+console.log(modifiedOklch2); // Expected output: [60, 32, 250, 90]
+```
+
+### Converting Oklch to RGB
+```javascript
+// Convert Oklch to RGB without alpha
+const rgbValues1 = oklchToRgb(60, 32, 250);
+console.log(rgbValues1); // Output: [r1, g1, b1]
+
+// Convert Oklch to RGB with alpha
+const rgbaValues = oklchToRgb(60, 32, 250, 128);
+console.log(rgbaValues); // Output: [r2, g2, b2, 128]
 ```
 
 ## Key Features

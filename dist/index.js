@@ -1,17 +1,20 @@
 "use strict";
-const colorConvert = require('color-convert');
-function parseAndModifyOklch(inputString) {
-    const regex = /oklch\(([^)]+)\)/g;
-    const modifiedString = inputString.replace(regex, (match, colorCode) => {
-        const [l, c, h] = colorCode.split(',').map(parseFloat);
-        const rgb = colorConvert.oklch.rgb([l, c, h]);
-        const modifiedColor = modifyColor(rgb); // Replace this with your color modification logic
-        return `rgb(${modifiedColor.join(',')})`;
-    });
-    return modifiedString;
-}
-function modifyColor(rgb) {
-    // Implement your color modification logic here
-    return rgb;
-}
-module.exports = parseAndModifyOklch;
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(require("./functions/extractOklchValue"), exports);
+__exportStar(require("./functions/modifyOklch"), exports);
+__exportStar(require("./functions/oklchToRgb"), exports);
+__exportStar(require("./functions/functions"), exports);
