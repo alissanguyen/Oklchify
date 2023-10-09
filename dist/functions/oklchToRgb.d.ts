@@ -9,4 +9,5 @@
  * @param h - Hue value in degrees
  * @returns - An array of RGB values: [R, G, B]
  */
-export {};
+import { OklchValue } from "./functions";
+export declare function oklchToRgb(l: number, c: number, h: number, alpha?: number): OklchValue;

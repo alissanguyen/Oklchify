@@ -11,6 +11,7 @@
  * @returns - An array of RGB values: [R, G, B]
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.oklchToRgb = void 0;
 function oklchToRgb(l, c, h, alpha) {
     // 1. Convert Oklch to Lab
     const a = c * Math.cos(h * (Math.PI / 180)); // Convert hue from degrees to radians
@@ -42,3 +43,4 @@ function oklchToRgb(l, c, h, alpha) {
     }
     return [r, g, b];
 }
+exports.oklchToRgb = oklchToRgb;
